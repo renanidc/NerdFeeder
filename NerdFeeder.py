@@ -3,6 +3,9 @@
 	NerdFeeder v1.0
 '''
 
+#!/usr/bin/python
+# coding: utf-8
+
 import urllib2 
 from urllib2 import Request
 from xml.etree.ElementTree import ElementTree
@@ -23,14 +26,6 @@ def grava_feed():
 tree = ElementTree(file='feed.xml')
 root = tree.getroot()
 
-#Lista os elementos abaixo do root
-print root.getchildren()
-
-#Encontra os podcasts
-channel = root.find('channel')
-item = channel.find('item')
-enclosure = item.find('enclosure')
-
-for podcast in item:
+# pegar todos os link dos podcasts .mp3
+for podcast in root.iter('enclosure'):  # pega todas as tags item
 	print podcast.tag, podcast.attrib
-	item = channel.find('item')
