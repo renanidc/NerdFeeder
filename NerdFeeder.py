@@ -27,5 +27,5 @@ tree = ElementTree(file='feed.xml')
 root = tree.getroot()
 
 # pegar todos os link dos podcasts .mp3
-for podcast in root.iter('enclosure'):  # pega todas as tags item
+for podcast in root.iter('enclosure'):  # pega todas as tags enclosure
 	print podcast.tag, podcast.attrib
